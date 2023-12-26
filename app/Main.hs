@@ -62,7 +62,7 @@ main = do
     then do putStrLn "Insufficient arguments"
     else do let file = args !! 1
             case (toLower . head . head $ args) of
-              'w' -> do let binaryString = args !! 2
-                        writeBinary file binaryString
+              'w' -> do inputFile <- readFile $ args !! 2
+                        writeBinary file inputFile
               'r' -> readBinary file
               _ -> putStrLn ""
